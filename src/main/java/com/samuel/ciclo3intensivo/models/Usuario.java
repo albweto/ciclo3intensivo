@@ -3,11 +3,9 @@ package com.samuel.ciclo3intensivo.models;
 import lombok.Data;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.util.Collection;
-import java.util.List;
 
 @Entity
 @Data
@@ -35,7 +33,7 @@ public class Usuario implements Serializable {
     private String apellido;
 
 
-    @Email
+    //@Email
     @NotEmpty
     private String email;
 
@@ -58,8 +56,14 @@ public class Usuario implements Serializable {
 
     }
 
-    public Usuario(String username, String nombre, String apellido, String email, String telefono, String encriptarPassword, Collection <Role> roles) {
+
+    public Usuario( String username, String password, String nombre, String apellido, String email, String telefono, Collection<Role> roles) {
+        this.username = username;
+        this.password = password;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.telefono = telefono;
+        this.roles = roles;
     }
-
-
 }
