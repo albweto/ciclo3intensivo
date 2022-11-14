@@ -20,4 +20,11 @@ public class Dueno  implements Serializable {
     @Column(name = "nombre_propeitario",nullable = false)
     @NotEmpty
     private  String nombrePropietario;
+
+    public Dueno() {
+    }
+
+    public Dueno(String nombrePropietario) {
+        this.nombrePropietario = nombrePropietario;
+    }
 }

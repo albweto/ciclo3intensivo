@@ -1,0 +1,38 @@
+<div th:fragment="loginform">
+    <div id="template-bg-1">
+        <div class="d-flex flex-column min-vh-100 justify-content-center align-items-center">
+            <div class="card p-4 text-light bg-dark mb-5">
+                <div class="card-header">
+                    <h3>Iniciar Session</h3>
+                </div>
+                <div class="card-body w-100">
+                    <form name="login" th:action="@{/login}" method="post">
+                        <div class="input-group form-group mt-3">
+                            <div class="bg-secondary rounded-start">
+                                <span class="m-3"><i class="fas fa-user mt-2"></i></span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="usuario" name="username" >
+                        </div>
+                        <div class="input-group form-group mt-3">
+                            <div class="bg-secondary rounded-start">
+                                <span class="m-3"><i class="fas fa-key mt-2"></i></span>
+                            </div>
+                            <input type="password" class="form-control" placeholder="password" name="password">
+                        </div>
+                        <div class="form-group mt-3">
+                            <input type="submit" value="Acceder"
+                                   class="btn bg-secondary float-end text-white w-100"
+                                   name="login-btn">
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <div class="d-flex justify-content-center">
+                        <div class="text-primary"><span>Nuevo usuario? <a href="/" th:href="@{/registration}">Register
+        here</a></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
