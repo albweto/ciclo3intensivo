@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<header th:replace="layouts/header :: head"></header>
+<body>
+<div th:replace="layouts/navbar :: navbar"></div>
+<div class="container">
+  <form th:action="@{/race/registrar}" method="post" th:object="${race}">
+    <div class="form-group">
+      <label for="idRace">ID:</label>
+      <input type="text" class="form-control" th:field="*{idRace}"></input>
+
+      <div class="form-group">
+        <label for="nombre">NOMBRE:</label>
+        <input type="text" class="form-control" th:field="*{nombreRace}" id="nombre"></input>
+
+        <div 	class="alert alert-danger" th:if="${#fields.hasErrors('nombreRace')}"
+                th:errors="*{nombreRace}">
+        </div>
+
+      </div>
+
+    </div>
+    <button type="submit" class="btn btn-primary">Aceptar</button>
+    <a href="/race/listar" class="btn btn-danger">Cancelar</a>
+  </form>
+</div>
+<footer th:replace="layouts/footer :: footer"></footer>
+</body>
+</html>

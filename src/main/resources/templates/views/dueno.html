@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<header th:replace="layouts/header :: head"></header>
+<body>
+<div th:replace="layouts/navbar :: navbar"></div>
+<div class="container">
+    <form th:action="@{/dueno/registrar}" method="post" th:object="${dueno}">
+        <div class="form-group">
+            <label for="iddueno">ID:</label>
+            <input type="text" class="form-control" th:field="*{idPropietario}"></input>
+
+            <div class="form-group">
+                <label for="nombre">Propietario:</label>
+                <input type="text" class="form-control" th:field="*{nombrePropietario}" id="nombre"></input>
+
+                <div 	class="alert alert-danger" th:if="${#fields.hasErrors('nombrePropietario')}"
+                        th:errors="*{nombrePropietario}">
+                </div>
+
+            </div>
+
+        </div>
+        <button type="submit" class="btn btn-primary">Aceptar</button>
+        <a href="/dueno/listar" class="btn btn-danger">Cancelar</a>
+    </form>
+</div>
+<footer th:replace="layouts/footer :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<header th:replace="layouts/header :: head"></header>
+<body>
+<div th:replace="layouts/navbar :: navbar"></div>
+<div class="container">
+    <form id="myform">
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+
+                <a 	style="border-bottom-color: green" th:href="@{/pet/irRegistrar}"
+                       type="button" class="btn btn-primary btn-md left-block">
+                    <span class="glyphicon glyphicon-plus"></span> Mascota
+                </a>
+
+               <!-- <a 	style="border-bottom-color: green" th:href="@{/pet/irBuscar}"
+                       type="button" class="btn btn-primary btn-md left-block">
+                    <span class="glyphicon glyphicon-search"></span> Buscar
+                </a>-->
+
+                <table class="table table-bordered table-hover table-striped" id="tab_logic">
+                    <thead>
+                    <tr>
+                        <th class="text-center">CODIGO</th>
+                        <th class="text-center">MASCOTA</th>
+                        <th class="text-center">FEC.NAC</th>
+                        <th class="text-center">RAZA</th>
+                        <th class="text-center">PROPIETARIO</th>
+                        <th class="text-center">OPERACION</th>
+                        <th class="text-center">OPERACION</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="pet: ${listaMascotas}">
+                        <td th:text="${pet.idPet}"></td>
+                        <td th:text="${pet.nombrePet}"></td>
+                        <td th:text="${#dates.format(pet.birthDatePet, 'dd/MM/yyyy')}"></td>
+                        <td th:text="${pet.race.nombreRace}"></td>
+                        <td th:text="${pet.dueno.nombrePropietario}"></td>
+                        <td><a th:href="@{/pet/eliminar?id=}+${pet.idPet}" class="btn btn-danger" role="button">Eliminar</a></td>
+                        <td><a th:href="@{'/pet/modificar/'}+${pet.idPet}" class="btn btn-info" role="button">Modificar</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        <div th:if="${mensaje}" class="alert alert-danger">
+            <p th:text="${mensaje}"></p>
+        </div>
+    </form>
+</div>
+<footer th:replace="layouts/footer :: footer"></footer>
+</body>
+</html>
