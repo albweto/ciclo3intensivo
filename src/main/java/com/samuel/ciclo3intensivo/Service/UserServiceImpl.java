@@ -31,13 +31,15 @@ public class UserServiceImpl  implements UserService {
 
     @Override
     public Usuario save(UserRegistrationDto registrationDto) {
-        var username = registrationDto.getUsername();
+        /*var username = registrationDto.getUsername();
         var nombre = registrationDto.getNombre();
         var apellido = registrationDto.getApellido();
         var email = registrationDto.getEmail();
         var telefono = registrationDto.getTelefono();
-        var password = encriptarPassword(registrationDto.getPassword());
-        Usuario usuario = new Usuario(username,password, nombre,apellido,email,telefono, Arrays.asList(new Role("ROLE_USER")));
+        var password = encriptarPassword(registrationDto.getPassword());*/
+        Usuario usuario = new Usuario(registrationDto.getUsername(),encriptarPassword(registrationDto.getPassword()),
+                registrationDto.getNombre(),registrationDto.getApellido(),registrationDto.getEmail(),registrationDto.getTelefono(),
+                Arrays.asList(new Role("ROLE_USER")));
         System.out.println(usuario);
         log.info("resultado"+usuario);
         return usuarioDao.save(usuario);
